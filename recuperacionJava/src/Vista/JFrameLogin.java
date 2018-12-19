@@ -1,8 +1,24 @@
 package Vista;
 
 import Controlador.Conexion;
+import Controlador.Controlador;
+import Controlador.Excepciones;
+import static Controlador.Excepciones.Mensajes;
+import static java.awt.image.ImageObserver.WIDTH;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class JFrameLogin extends javax.swing.JFrame {
+
+    JPanelMenuPrincipal menu = new JPanelMenuPrincipal();
+    static public ArrayList Reparaciones = new ArrayList();
+    static public ArrayList Coches = new ArrayList();
+    static public int codigoCliente;
+    int contadorIntentos = 3;
 
     public JFrameLogin() {
         initComponents();
@@ -34,6 +50,11 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabel4.setText("Contraseña:");
 
         jButton1.setText("Acceder");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Limpiar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -78,11 +99,9 @@ public class JFrameLogin extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(54, 54, 54)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel3))
+                    .addComponent(jLabel3)
                     .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -103,6 +122,45 @@ public class JFrameLogin extends javax.swing.JFrame {
         fieldUsuario.setText("");
         fieldPassword.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Controlador con = new Controlador();
+        char[] arrayC = fieldPassword.getPassword();
+        String pass = new String(arrayC);
+  
+        if (!fieldUsuario.getText().equals("") && !fieldPassword.getText().equals("")) {
+            try {
+                if (con.iniciarSesion(fieldUsuario.getText(), pass)) {
+                    codigoCliente = Controlador.devolverCodigo("CODIGO", "CLIENTE", "USUARIO", fieldUsuario.getText());
+                    //Controlador.cargarCoches();
+                    //Controlador.cargarReparaciones();
+                    Conexion.escribirLog("/home/alumno/Escritorio/recuperacion/recuperacionJava/recuperacionJava/src/log.txt", fieldUsuario.getText());
+                    cambiarContenido(menu);
+                } else {
+                    Excepciones e = new Excepciones(1);
+                    if(contadorIntentos > 1){
+                        contadorIntentos--;
+                        JOptionPane.showMessageDialog(null, "Te quedan "+contadorIntentos+" intentos.");
+                    } else {
+                        Excepciones ex = new Excepciones(3);
+                        System.exit(0);
+                    }
+                }
+            } catch (SQLException ex) {
+                Excepciones e = new Excepciones(ex.getMessage(), 1);
+            } catch (IOException ex) {
+                Logger.getLogger(JFrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            Excepciones e = new Excepciones(2);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public void cambiarContenido(javax.swing.JPanel aux){
+     
+        this.setContentPane(aux);
+        this.pack();
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

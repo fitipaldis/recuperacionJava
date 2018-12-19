@@ -26,3 +26,8 @@ create table reparacion (
 	constraint fk_coche foreign key (codcoche) references coche (codigo)
 );
 
+insert into cliente
+values(1, '12345678A', 'alejandro', 'alejandro');
+
+insert into cliente
+values(2, '23546897B', 'maria', 'maria');

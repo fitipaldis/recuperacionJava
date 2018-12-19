@@ -1,0 +1,6 @@
+dic 19, 2018 5:08:09 PM Controlador.Conexion escribirLog
+INFORMACIÓN: alejandro
+dic 19, 2018 5:11:05 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 19, 2018 5:13:26 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
