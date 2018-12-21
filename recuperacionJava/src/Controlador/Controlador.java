@@ -1,9 +1,16 @@
 package Controlador;
 
+import Modelo.Coche;
+import Modelo.Reparacion;
+import Vista.JFrameLogin;
+import Vista.JPanelVisualizar;
+import static Vista.JPanelVisualizar.codigoCoche;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
 
 public class Controlador {
 
@@ -34,6 +41,80 @@ public class Controlador {
         rset.next();
     }
 
+    public static void insertarCoche(int numCoche, String marca, int codigoCliente, String imagen) throws SQLException {
+
+        Statement stmt = Conexion.connection.createStatement();
+        Iterator iterator = JFrameLogin.Coches.iterator();
+        Modelo.Coche next = null;
+
+        for (int i = 0; i < JFrameLogin.Coches.size(); i++) {
+            next = (Coche) iterator.next();
+            String sql = "SELECT CODIGO FROM COCHE WHERE CODIGO= " + next.getCodigo();
+            rset = stmt.executeQuery(sql);
+
+            if (!rset.next()) {
+                sql = "INSERT INTO COCHE (CODIGO,MARCA,CODCLIENTE,IMAGEN) VALUES (" + next.getCodigo() + ",'" + next.getMarca() + "'," + next.getCodcliente() + ",'" + next.getImagen().toString() + "')";
+                stmt.executeUpdate(sql);
+            }
+        }
+
+    }
+
+    public static void cargarCoches() throws SQLException {
+
+        stmt = Conexion.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        String sql = Modelo.Consultas.selectint("*", "COCHE", "CODCLIENTE", JFrameLogin.codigoCliente, false);
+        rset = stmt.executeQuery(sql);
+
+        while (rset.next()) {
+            Coche nuevo = new Coche(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4));
+
+            Vista.JFrameLogin.Coches.add(nuevo);
+        };
+
+    }
+
+    public static void tablaCocheReparacion(int codigoCoche) throws SQLException {
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        Vista.JPanelVisualizar.jTable1.setModel(modelo);
+
+        //Establecer como cabeceras el nombre de las columnas   
+        String[] columNames = {"Reparacion", "Descripción", "Precio"};
+        modelo.setColumnIdentifiers(columNames);
+
+        //Creando las filas para el JTable
+        if (JFrameLogin.Reparaciones.size() > 0) {
+            Object[] fila = new Object[columNames.length];
+            Modelo.Reparacion dato = new Reparacion();
+            for (int i = 0; i < JFrameLogin.Reparaciones.size(); i++) {
+                dato = (Modelo.Reparacion) JFrameLogin.Reparaciones.get(i);
+                if (dato.getCodigoCoche() == codigoCoche) {
+                    fila[0] = dato.getCodigo();
+                    fila[1] = dato.getDescripcion();
+                    fila[2] = dato.getPrecioTotal();
+                    modelo.addRow(fila);
+                }
+            }
+
+            JPanelVisualizar.jTable1.setModel(modelo);
+
+        }
+
+    }
+
+    public static String devolverNombreCliente() throws SQLException {
+
+        stmt = Conexion.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        String sql = Modelo.Consultas.selectint("USUARIO", "CLIENTE", "CODIGO", JFrameLogin.codigoCliente, false);
+        rset = stmt.executeQuery(sql);
+
+        rset.next();
+        return rset.getString(1);
+    }
+
     public static int devolverCodigo(String codigo, String tabla, String variable, String usuario) throws SQLException {
 
         PreparedStatement s = Conexion.connection.prepareStatement("SELECT " + codigo + " FROM " + tabla + " WHERE " + variable + " = ?");
@@ -42,6 +123,33 @@ public class Controlador {
 
         rs.next();
         return rs.getInt(1);
+    }
 
+    public static int devolverNumeroCoche() throws SQLException {
+
+        stmt = Conexion.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        String sql = Modelo.Consultas.consultarCoches("COUNT(*)", "COCHE", "CODCLIENTE", JFrameLogin.codigoCliente);
+        rset = stmt.executeQuery(sql);
+
+        rset.next();
+
+        int suma = rset.getInt(1) + JFrameLogin.Coches.size();
+
+        return suma + 1;
+    }
+
+    public static int devolverNumeroReparacion() throws SQLException {
+
+        stmt = Conexion.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        String sql = Modelo.Consultas.consultarCoches("COUNT(*)", "REPARACION", "CODIGO", JFrameLogin.Reparaciones.size());
+        rset = stmt.executeQuery(sql);
+
+        rset.next();
+
+        int suma = rset.getInt(1) + JFrameLogin.Reparaciones.size();
+
+        return suma + 1;
     }
 }

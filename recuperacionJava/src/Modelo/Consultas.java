@@ -24,4 +24,11 @@ public class Consultas {
         }
         return sql;
     }
+
+    public static String consultarCoches(String parametro, String tabla, String fila, int condicion) {
+
+        String sql = "SELECT " + parametro + " FROM " + tabla + " WHERE " + fila + " != " + condicion + "";
+
+        return sql;
+    }
 }
