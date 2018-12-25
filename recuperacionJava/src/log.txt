@@ -96,3 +96,103 @@ dic 24, 2018 4:01:56 PM Controlador.Conexion escribirLog
 INFORMACIÓN: ale
 dic 25, 2018 1:00:56 PM Controlador.Conexion escribirLog
 INFORMACIÓN: ale
+dic 25, 2018 1:10:45 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 1:12:39 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 1:15:53 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 2:56:31 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:09:26 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:10:48 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:15:54 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:17:01 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:20:30 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:21:36 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:23:09 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 3:26:16 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:28:01 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:32:04 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:34:43 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:36:04 PM Controlador.Conexion escribirLog
+INFORMACIÓN: ale
+dic 25, 2018 3:54:37 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:01:12 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:02:50 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:08:13 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:08:38 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:09:55 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:10:39 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:11:50 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:12:36 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:13:08 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:13:59 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:14:26 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:27:05 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:30:51 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:35:39 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 4:37:06 PM Controlador.Conexion escribirLog
+INFORMACIÓN: alejandro
+dic 25, 2018 5:04:06 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:27:06 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:29:36 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:32:05 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:33:50 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:35:03 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:39:59 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:41:20 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:42:29 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:46:41 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 5:57:18 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 6:02:19 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 6:18:50 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 6:22:30 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 6:28:39 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 6:29:04 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 6:29:32 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria
+dic 25, 2018 11:08:38 PM Controlador.Conexion escribirLog
+INFORMACIÓN: maria

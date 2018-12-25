@@ -2,7 +2,10 @@ package Vista;
 
 import Controlador.Excepciones;
 import static java.awt.image.ImageObserver.WIDTH;
+import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,9 +34,6 @@ public class JPanelVisualizar extends javax.swing.JPanel {
         buttonSig = new javax.swing.JButton();
         buttonAnt = new javax.swing.JButton();
         buttonMenu = new javax.swing.JButton();
-        buttonReparacion = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         labelCliente.setText("Coches del cliente");
 
@@ -64,34 +64,6 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             }
         });
 
-        buttonReparacion.setText("Registrar Reparación");
-        buttonReparacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonReparacionActionPerformed(evt);
-            }
-        });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Código", "Descripción", "Precio", "Fecha", "Title 5"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,23 +78,18 @@ public class JPanelVisualizar extends javax.swing.JPanel {
                         .addComponent(labelMarca)))
                 .addGap(157, 157, 157))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(buttonAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonReparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonSig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                        .addComponent(buttonSig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,47 +107,63 @@ public class JPanelVisualizar extends javax.swing.JPanel {
                     .addComponent(buttonSig)
                     .addComponent(buttonAnt)
                     .addComponent(buttonMenu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonReparacion)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReparacionActionPerformed
-        JPanelInsertarReparacion registrarReparacion = null;
-
-        try {
-            registrarReparacion = new JPanelInsertarReparacion();
-        } catch (SQLException ex) {
-            Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        registrarReparacion.setSize(400, 500);
-        this.removeAll();
-        this.add(registrarReparacion);
-        this.revalidate();
-        this.repaint();
-    }//GEN-LAST:event_buttonReparacionActionPerformed
-
     private void buttonSigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSigActionPerformed
         try {
-            controlSigAnte(true);
 
+            Moverse(true);
+        } catch (IOException ex) {
+
+            Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Excepciones e = new Excepciones(ex.getMessage(), 0);
+
+            Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+
+            Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buttonSigActionPerformed
 
     private void buttonAntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAntActionPerformed
         try {
 
-            controlSigAnte(false);
+            Moverse(false);
+        } catch (IOException ex) {
+
+            Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Excepciones e = new Excepciones(ex.getMessage(), 0);
+
+            Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+
+            Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buttonAntActionPerformed
+
+    public void Moverse(boolean bandera) throws IOException, SQLException, ParseException {
+
+        if (JFrameLogin.Coches.size() > 0) {
+
+            if (contador < JFrameLogin.Coches.size() && bandera) {
+
+                contador++;
+                verCoches();
+            } else {
+
+                if (contador > 1 && !bandera) {
+
+                    contador--;
+                    verCoches();
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Se ha llegado al extremo de la lista", "Mensaje de Error", WIDTH);
+                }
+            }
+        }
+    }
 
     private void buttonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuActionPerformed
         contador = 0;
@@ -191,42 +174,17 @@ public class JPanelVisualizar extends javax.swing.JPanel {
         this.revalidate();
         this.repaint();
     }//GEN-LAST:event_buttonMenuActionPerformed
-    public void controlSigAnte(boolean flag) throws SQLException {
 
-        if (JFrameLogin.Coches.size() > 0) {
-            if (contador < JFrameLogin.Coches.size() && flag) {
-                contador++;
-                contadorCoches(true);
-            } else {
-                if (contador > 1 && !flag) {
-                    contador--;
-                    contadorCoches(false);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No hay mas coches registrados", "Mensaje de Error", WIDTH);
-                }
-            }
-        }
+    public void verCoches() throws IOException, SQLException, ParseException {
+
+        ResultSet rset = Controlador.Controlador.mostrarDatosCoches(contador);
+
+        codigoCoche = rset.getInt(1);
+        mostrarDatos(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4));
     }
 
-    public void contadorCoches(boolean flag) throws SQLException {
+    public void mostrarDatos(int codigoCoche, String marca, int codCliente, String foto) throws SQLException {
 
-        ListIterator iterator = JFrameLogin.Coches.listIterator();
-        Modelo.Coche next = null;
-        for (int i = 0; i < contador; i++) {
-
-            next = (Modelo.Coche) iterator.next();
-
-        }
-        codigoCoche = next.getCodigo();
-        marca = next.getMarca();
-
-        Controlador.Controlador.tablaCocheReparacion(JPanelVisualizar.getCodigoCoche());
-        mostrarCoches(next.getCodigo(), next.getMarca(), next.getCodcliente(), next.getImagen());
-    }
-
-    public void mostrarCoches(int codigoCoche, String marca, int codCliente, String foto) throws SQLException {
-
-        labelCliente.setText("Coches del Cliente " + Controlador.Controlador.devolverNombreCliente() + "\n");
         labelCodigo.setText("Código Coche: " + codigoCoche + "\n");
         labelMarca.setText("Marca: " + marca + "\n");
         rsscalelabel.RSScaleLabel.setScaleLabel(labelImagen, foto);
@@ -257,10 +215,7 @@ public class JPanelVisualizar extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAnt;
     private javax.swing.JButton buttonMenu;
-    private javax.swing.JButton buttonReparacion;
     private javax.swing.JButton buttonSig;
-    private javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JTable jTable1;
     private javax.swing.JLabel labelCliente;
     private javax.swing.JLabel labelCodigo;
     private javax.swing.JLabel labelImagen;

@@ -3,8 +3,6 @@ package Vista;
 import Controlador.Conexion;
 import Controlador.Controlador;
 import Controlador.Excepciones;
-import static Controlador.Excepciones.Mensajes;
-import static java.awt.image.ImageObserver.WIDTH;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -133,7 +131,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                 if (con.iniciarSesion(fieldUsuario.getText(), pass)) {
                     codigoCliente = Controlador.devolverCodigo("CODIGO", "CLIENTE", "USUARIO", fieldUsuario.getText());
                     Controlador.cargarCoches();
-                    Controlador.cargarReparaciones();
+                    //Controlador.cargarReparaciones();
                     //Conexion.escribirLog("/home/alumno/Escritorio/recuperacion/recuperacionJava/recuperacionJava/src/log.txt", fieldUsuario.getText());
                     Conexion.escribirLog("C:\\Users\\Fiti\\Desktop\\recuperacionJAVA\\recuperacionJava\\recuperacionJava\\src\\log.txt", fieldUsuario.getText());
                     cambiarContenido(menu);

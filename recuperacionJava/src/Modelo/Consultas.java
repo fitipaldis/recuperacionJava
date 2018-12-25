@@ -14,17 +14,20 @@ public class Consultas {
 
     }
 
-    public static String selectint(String parametro, String tabla, String fila, int condicion, boolean flag) {
-
+    public static String selectInt(String parametro, String tabla, String fila, int condicion, boolean bandera) {
+        
         String sql;
-        if (flag) {
+        if(bandera) {
+            
             sql = "SELECT " + parametro + " FROM " + tabla;
         } else {
+            
             sql = "SELECT " + parametro + " FROM " + tabla + " WHERE " + fila + " = " + condicion + "";
         }
+        
         return sql;
     }
-
+    
     public static String consultarCoches(String parametro, String tabla, String fila, int condicion) {
 
         String sql = "SELECT " + parametro + " FROM " + tabla + " WHERE " + fila + " != " + condicion + "";
