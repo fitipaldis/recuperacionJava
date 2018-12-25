@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class Reparacion {
@@ -10,12 +11,12 @@ public class Reparacion {
     private int codigoCoche;
     private GregorianCalendar fecha;
 
-    public Reparacion(int codigo, String descripcion, float precioTotal, int codigoCoche, GregorianCalendar fecha) {
+    public Reparacion(int codigo, String descripcion, float precioTotal, int codigoCoche, String fecha) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precioTotal = precioTotal;
         this.codigoCoche = codigoCoche;
-        this.fecha = fecha;
+        setFecha(fecha);
     }
 
     public Reparacion() {
@@ -54,12 +55,21 @@ public class Reparacion {
         this.codigoCoche = codigoCoche;
     }
 
-    public GregorianCalendar getFecha() {
-        return fecha;
+    public String getFecha() {
+        
+        SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yy");
+        fmt.setCalendar(fecha);
+        String dateFormatted = fmt.format(fecha.getTime());        
+        return dateFormatted;
     }
 
-    public void setFecha(GregorianCalendar fecha) {
-        this.fecha = fecha;
+    public void setFecha(String fechaIntroducida) {
+        
+        String dia = fechaIntroducida.substring(0, 2);
+        String mes = fechaIntroducida.substring(3, 5);
+        String año = fechaIntroducida.substring(6);
+        
+        fecha = new GregorianCalendar(Integer.parseInt(año) + 2000, Integer.parseInt(mes) - 1, Integer.parseInt(dia));
     }
 
 }

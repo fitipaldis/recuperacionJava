@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 
@@ -60,6 +62,26 @@ public class Controlador {
 
     }
 
+    public static void insertarReparacion(int numRepa, String tipo, float precio, int codCoche, String fecha) throws SQLException {
+
+        Statement stmt = Conexion.connection.createStatement();
+        Iterator iterator = JFrameLogin.Reparaciones.iterator();
+        Modelo.Reparacion next = null;
+
+        for (int i = 0; i < JFrameLogin.Reparaciones.size(); i++) {
+            next = (Modelo.Reparacion) iterator.next();
+            String sql = "SELECT CODIGO FROM REPARACION WHERE CODCOCHE =" + next.getCodigoCoche() + " AND CODIGO=" + next.getCodigo();
+            rset = stmt.executeQuery(sql);
+
+            if (!rset.next()) {
+                System.out.println("" + next.getFecha());
+                String f = "20" + next.getFecha().substring(6) + "-" + next.getFecha().substring(3, 5) + "-" + next.getFecha().substring(0, 2);
+                sql = "INSERT INTO REPARACION (CODIGO,DESCRIPCION,PRECIOTOTAL,CODCOCHE,FECHA) VALUES (" + next.getCodigo() + ",'" + next.getDescripcion() + "'," + next.getPrecioTotal() + "," + next.getCodigoCoche() + ",'" + f + "')";
+                stmt.executeUpdate(sql);
+            }
+        }
+    }
+
     public static void cargarCoches() throws SQLException {
 
         stmt = Conexion.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
@@ -71,6 +93,21 @@ public class Controlador {
             Coche nuevo = new Coche(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4));
 
             Vista.JFrameLogin.Coches.add(nuevo);
+        };
+
+    }
+
+    public static void cargarReparaciones() throws SQLException {
+
+        stmt = Conexion.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        String sql = Modelo.Consultas.selectint("*", "REPARACION", "", 0, true);
+        rset = stmt.executeQuery(sql);
+
+        while (rset.next()) {
+            SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yy");
+            Reparacion nueva = new Reparacion(rset.getInt(1), rset.getString(2), rset.getFloat(3), rset.getInt(4), fmt.format(rset.getDate(5)));
+            Vista.JFrameLogin.Reparaciones.add(nueva);
         };
 
     }
