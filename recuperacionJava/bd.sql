@@ -17,12 +17,11 @@ create table coche (
 
 /* TABLA C (REPARACION)*/
 create table reparacion (
-	codigo integer not null,
+	codigo integer primary key not null,
 	descripcion varchar(50) not null,
 	preciototal numeric(5,2) not null,	
 	codcoche integer not null,
 	fecha date not null,
-	constraint pk_codreparacion primary key (codcoche),
 	constraint fk_coche foreign key (codcoche) references coche (codigo)
 );
 
@@ -31,3 +30,9 @@ values(1, '12345678A', 'alejandro', 'alejandro');
 
 insert into cliente
 values(2, '23546897B', 'maria', 'maria');
+
+
+insert into reparacion values
+(
+3, 'cristal', 120, 1, '12/12/2018'
+);

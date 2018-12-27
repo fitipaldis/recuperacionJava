@@ -5,6 +5,8 @@ import Modelo.Coche;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.io.File;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -136,12 +138,18 @@ public class JPanelInsertarCoche extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JPanelMenuPrincipal cancelar = new JPanelMenuPrincipal();
-        cancelar.setSize(400, 500);
-        this.removeAll();
-        this.add(cancelar);
-        this.revalidate();
-        this.repaint();
+        JPanelMenuPrincipal cancelar;
+        try {
+            cancelar = new JPanelMenuPrincipal();
+            cancelar.setSize(500, 650);
+            this.removeAll();
+            this.add(cancelar);
+            this.revalidate();
+            this.repaint();
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanelInsertarCoche.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -151,7 +159,7 @@ public class JPanelInsertarCoche extends javax.swing.JPanel {
                 agregarCoche();
                 JOptionPane.showMessageDialog(null, "Coche registrado correctamente", "Mensaje de Control", WIDTH);
                 JPanelMenuPrincipal menu = new JPanelMenuPrincipal();
-                menu.setSize(400, 500);
+                menu.setSize(500, 650);
                 this.removeAll();
                 this.add(menu);
                 this.revalidate();
