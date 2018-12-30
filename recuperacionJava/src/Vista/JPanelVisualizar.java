@@ -21,7 +21,7 @@ public class JPanelVisualizar extends javax.swing.JPanel {
     static String marca = null;
     public static int codigoCoche = 0;
 
-    public JPanelVisualizar() {
+    public JPanelVisualizar() throws SQLException {
         initComponents();
         inicializarLabels();
     }
@@ -49,9 +49,10 @@ public class JPanelVisualizar extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         buttonExaminarIMG = new javax.swing.JButton();
         buttonActualizarImagen = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         labelCliente.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        labelCliente.setText("Coches del cliente:");
+        labelCliente.setText("COCHES DEL CLIENTE:");
 
         labelCodigo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         labelCodigo.setText("Código:");
@@ -59,9 +60,11 @@ public class JPanelVisualizar extends javax.swing.JPanel {
         labelMarca.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         labelMarca.setText("Marca:");
 
-        labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imgdefault.png"))); // NOI18N
+        labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Diseño/imgdefault.png"))); // NOI18N
         labelImagen.setBorder(new javax.swing.border.MatteBorder(null));
 
+        buttonSig.setBackground(new java.awt.Color(255, 153, 102));
+        buttonSig.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         buttonSig.setText("Siguiente");
         buttonSig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +72,8 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             }
         });
 
+        buttonAnt.setBackground(new java.awt.Color(255, 153, 102));
+        buttonAnt.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         buttonAnt.setText("Anterior");
         buttonAnt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +81,8 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             }
         });
 
+        buttonMenu.setBackground(new java.awt.Color(102, 153, 255));
+        buttonMenu.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         buttonMenu.setText("Menú Principal");
         buttonMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +90,8 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(102, 255, 102));
+        jButton1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jButton1.setText("Registrar Reparación");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +99,7 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             }
         });
 
+        jTablaReparacion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTablaReparacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -103,6 +113,8 @@ public class JPanelVisualizar extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTablaReparacion);
 
+        buttonEliminarCoche.setBackground(new java.awt.Color(255, 102, 102));
+        buttonEliminarCoche.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         buttonEliminarCoche.setText("Eliminar coche");
         buttonEliminarCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,14 +122,17 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             }
         });
 
+        labelNomCliente.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         labelNomCliente.setText("nombre");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setText("Modificaciones:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Marca:");
 
+        buttonActualizarMarca.setBackground(new java.awt.Color(204, 255, 102));
+        buttonActualizarMarca.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         buttonActualizarMarca.setText("Actualizar");
         buttonActualizarMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +143,8 @@ public class JPanelVisualizar extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("Imagen:");
 
+        buttonExaminarIMG.setBackground(new java.awt.Color(204, 153, 255));
+        buttonExaminarIMG.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         buttonExaminarIMG.setText("Examinar");
         buttonExaminarIMG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +152,8 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             }
         });
 
+        buttonActualizarImagen.setBackground(new java.awt.Color(204, 255, 102));
+        buttonActualizarImagen.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         buttonActualizarImagen.setText("Actualizar");
         buttonActualizarImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,22 +161,18 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel4.setText("Reparaciones:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(labelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonSig, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelCodigo)
@@ -167,40 +182,41 @@ public class JPanelVisualizar extends javax.swing.JPanel {
                                 .addComponent(labelCliente)
                                 .addGap(18, 18, 18)
                                 .addComponent(labelNomCliente))))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(labelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(buttonAnt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonSig, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldMarcaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonExaminarIMG)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonActualizarImagen)
+                            .addComponent(buttonActualizarMarca))
+                        .addGap(35, 35, 35)
+                        .addComponent(buttonEliminarCoche))
+                    .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(buttonMenu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(buttonExaminarIMG, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(fieldMarcaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(buttonActualizarMarca)
-                                            .addComponent(buttonActualizarImagen))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(buttonEliminarCoche, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(buttonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCliente)
                     .addComponent(labelNomCliente))
@@ -209,35 +225,38 @@ public class JPanelVisualizar extends javax.swing.JPanel {
                     .addComponent(labelCodigo)
                     .addComponent(labelMarca))
                 .addGap(11, 11, 11)
-                .addComponent(labelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                .addComponent(labelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(buttonAnt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonSig))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonAnt)
-                            .addComponent(buttonSig, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(fieldMarcaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(buttonActualizarMarca))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3))
-                            .addComponent(buttonEliminarCoche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonExaminarIMG)
-                        .addComponent(buttonActualizarImagen)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(fieldMarcaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonActualizarMarca))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(buttonExaminarIMG)
+                                .addComponent(buttonActualizarImagen))
+                            .addComponent(jLabel3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(buttonEliminarCoche, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(48, 48, 48))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -289,7 +308,7 @@ public class JPanelVisualizar extends javax.swing.JPanel {
                     verCoches();
                 } else {
 
-                    JOptionPane.showMessageDialog(null, "Se ha llegado al extremo de la lista", "Mensaje de Error", WIDTH);
+                    JOptionPane.showMessageDialog(null, "No hay mas coches registrados", "Mensaje de Error", WIDTH);
                 }
             }
         }
@@ -383,13 +402,13 @@ public class JPanelVisualizar extends javax.swing.JPanel {
                 Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            Excepciones ex = new Excepciones(3);
+            Excepciones ex = new Excepciones(7);
         }
     }//GEN-LAST:event_buttonActualizarImagenActionPerformed
 
     private void buttonActualizarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActualizarMarcaActionPerformed
 
-        if (!fieldMarcaActualizar.equals("")) {
+        if (!fieldMarcaActualizar.getText().equals("")) {
             Statement stmt = null;
             try {
                 ResultSet rset = Controlador.Controlador.mostrarDatosCoches(contador);
@@ -405,7 +424,7 @@ public class JPanelVisualizar extends javax.swing.JPanel {
                 Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            Excepciones ex = new Excepciones(3);
+            Excepciones ex = new Excepciones(2);
         }
     }//GEN-LAST:event_buttonActualizarMarcaActionPerformed
 
@@ -426,13 +445,13 @@ public class JPanelVisualizar extends javax.swing.JPanel {
 
     }
 
-    public void inicializarLabels() {
+    public void inicializarLabels() throws SQLException {
 
         //Icon icon = null;
         //labelImagen.setIcon(icon);
-        labelCliente.setText("");
         labelCodigo.setText("");
         labelMarca.setText("");
+        labelNomCliente.setText(Controlador.Controlador.devolverNombreCliente());
     }
 
     public static int getCodigoCoche() {
@@ -460,6 +479,7 @@ public class JPanelVisualizar extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JTable jTablaReparacion;
     private javax.swing.JLabel labelCliente;

@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 
 public class JPanelInsertarReparacion extends javax.swing.JPanel {
 
+    static final int LIMITE_PRECIO = 3000;
+    
     public JPanelInsertarReparacion() throws SQLException {
         initComponents();
         inicializarFields();
@@ -35,11 +37,10 @@ public class JPanelInsertarReparacion extends javax.swing.JPanel {
         fieldCoche = new javax.swing.JTextField();
         buttonRegistrar = new javax.swing.JButton();
         buttonCancelar = new javax.swing.JButton();
-
-        setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setText("Registar Reparacion");
+        jLabel1.setText("REGISTRAR REPARACIÓN");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Código:");
@@ -58,9 +59,10 @@ public class JPanelInsertarReparacion extends javax.swing.JPanel {
 
         fieldCodigo.setEditable(false);
         fieldCodigo.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        fieldCodigo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         fieldDescripcion.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        fieldDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "*"));
+        fieldDescripcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         fieldDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldDescripcionActionPerformed(evt);
@@ -68,15 +70,22 @@ public class JPanelInsertarReparacion extends javax.swing.JPanel {
         });
 
         fieldPrecio.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        fieldPrecio.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "*"));
+        fieldPrecio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        fieldPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldPrecioActionPerformed(evt);
+            }
+        });
 
-        fieldFecha.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "*"));
+        fieldFecha.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         fieldFecha.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
 
         fieldCoche.setEditable(false);
         fieldCoche.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        fieldCoche.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        buttonRegistrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        buttonRegistrar.setBackground(new java.awt.Color(102, 255, 102));
+        buttonRegistrar.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         buttonRegistrar.setText("Registrar");
         buttonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +93,8 @@ public class JPanelInsertarReparacion extends javax.swing.JPanel {
             }
         });
 
-        buttonCancelar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        buttonCancelar.setBackground(new java.awt.Color(255, 102, 102));
+        buttonCancelar.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         buttonCancelar.setText("Cancelar");
         buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,72 +102,79 @@ public class JPanelInsertarReparacion extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        jLabel7.setText("Debe ser inferior a 3000€");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldCoche, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldDescripcion)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(fieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldCoche, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(fieldFecha))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(fieldPrecio))
-                                .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(buttonRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(buttonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(fieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                                    .addComponent(jLabel1))
+                                .addGap(0, 19, Short.MAX_VALUE)))))
+                .addGap(82, 82, 82))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(169, 169, 169)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(fieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addGap(100, 100, 100)
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(fieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(fieldCoche, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel3))
-                    .addComponent(fieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(fieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addGap(1, 1, 1)
+                .addComponent(fieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(fieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(buttonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonCancelar)
-                .addGap(38, 38, 38))
+                .addGap(96, 96, 96))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -169,14 +186,18 @@ public class JPanelInsertarReparacion extends javax.swing.JPanel {
 
         if (!fieldDescripcion.getText().equals("") && !fieldPrecio.getText().equals("") && !fieldFecha.getText().equals("")) {
             try {
-                agregarReparacion();
-                JOptionPane.showMessageDialog(null, "Reparación registrada correctamente", "Mensaje de Control", WIDTH);
-                JPanelMenuPrincipal menu = new JPanelMenuPrincipal();
-                menu.setSize(500, 650);
-                this.removeAll();
-                this.add(menu);
-                this.revalidate();
-                this.repaint();
+                if(Integer.parseInt(fieldPrecio.getText()) > LIMITE_PRECIO){
+                    Excepciones e = new Excepciones(6);
+                } else {
+                    agregarReparacion();
+                    JOptionPane.showMessageDialog(null, "Reparación registrada correctamente", "Mensaje de Control", WIDTH);
+                    JPanelMenuPrincipal menu = new JPanelMenuPrincipal();
+                    menu.setSize(500, 650);
+                    this.removeAll();
+                    this.add(menu);
+                    this.revalidate();
+                    this.repaint();
+                }
             } catch (SQLException ex) {
                 Excepciones e = new Excepciones(ex.getMessage(), 0);
             } catch (ParseException ex) {
@@ -201,6 +222,10 @@ public class JPanelInsertarReparacion extends javax.swing.JPanel {
             Logger.getLogger(JPanelInsertarReparacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buttonCancelarActionPerformed
+
+    private void fieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldPrecioActionPerformed
 
     public void agregarReparacion() throws SQLException, ParseException {
 
@@ -242,5 +267,6 @@ public class JPanelInsertarReparacion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

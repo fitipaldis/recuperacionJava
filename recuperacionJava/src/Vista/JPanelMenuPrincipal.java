@@ -21,14 +21,15 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         buttonRegistrarCoche = new javax.swing.JButton();
-        buttonVisualizarCoche = new javax.swing.JButton();
         buttonLogout = new javax.swing.JButton();
+        buttonVisualizarCoche = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setText("MENÚ PRINCIPAL");
-
+        buttonRegistrarCoche.setBackground(new java.awt.Color(102, 255, 102));
+        buttonRegistrarCoche.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        buttonRegistrarCoche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Diseño/registro.png"))); // NOI18N
         buttonRegistrarCoche.setText("Registrar Coche");
         buttonRegistrarCoche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -36,13 +37,9 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
             }
         });
 
-        buttonVisualizarCoche.setText("Visualizar Coche");
-        buttonVisualizarCoche.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVisualizarCocheActionPerformed(evt);
-            }
-        });
-
+        buttonLogout.setBackground(new java.awt.Color(255, 102, 102));
+        buttonLogout.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        buttonLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Diseño/logout2.png"))); // NOI18N
         buttonLogout.setText("Logout");
         buttonLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +47,19 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
             }
         });
 
+        buttonVisualizarCoche.setBackground(new java.awt.Color(255, 153, 102));
+        buttonVisualizarCoche.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        buttonVisualizarCoche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Diseño/visualizar.png"))); // NOI18N
+        buttonVisualizarCoche.setText("Visualizar Coche");
+        buttonVisualizarCoche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonVisualizarCocheActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(204, 255, 102));
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Diseño/verDatos.png"))); // NOI18N
         jButton1.setText("Ver Datos de Conexiones");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,36 +67,39 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Diseño/logoMenu.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(166, 166, 166)
+                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonRegistrarCoche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonVisualizarCoche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(32, 32, 32))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(181, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jLabel1)
-                .addGap(66, 66, 66)
-                .addComponent(buttonRegistrarCoche)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonRegistrarCoche, javax.swing.GroupLayout.PREFERRED_SIZE, 65, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(buttonVisualizarCoche)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addComponent(buttonLogout)
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addGap(46, 46, 46))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,12 +124,17 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonLogoutActionPerformed
 
     private void buttonVisualizarCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVisualizarCocheActionPerformed
-        JPanelVisualizar verCoches = new JPanelVisualizar();
-        verCoches.setSize(500, 650);
-        this.removeAll();
-        this.add(verCoches);
-        this.revalidate();
-        this.repaint();
+        JPanelVisualizar verCoches;
+        try {
+            verCoches = new JPanelVisualizar();
+            verCoches.setSize(500, 650);
+            this.removeAll();
+            this.add(verCoches);
+            this.revalidate();
+            this.repaint();
+        } catch (SQLException ex) {
+            Logger.getLogger(JPanelMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_buttonVisualizarCocheActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -133,6 +151,8 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
         } catch (IOException ex) {
             Logger.getLogger(JPanelMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
+            Logger.getLogger(JPanelMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(JPanelMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -151,6 +171,6 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton buttonRegistrarCoche;
     private javax.swing.JButton buttonVisualizarCoche;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

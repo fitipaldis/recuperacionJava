@@ -135,7 +135,6 @@ public class Controlador {
         rset.next();
 
         int suma = rset.getInt(1) + JFrameLogin.Coches.size();
-        System.out.println("suma: " + suma);
         return suma + 1;
     }
 
@@ -221,5 +220,4 @@ public class Controlador {
             JPanelVisualizarConexiones.jTableClientes.setModel(modelo);
         }
     }
-
 }

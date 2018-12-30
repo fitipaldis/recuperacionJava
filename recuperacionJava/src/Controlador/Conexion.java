@@ -1,18 +1,30 @@
 package Controlador;
 //Establece la conexion con la BD y agrega al fichero de conexiones el login del usuario correspondiente.
 
+import Vista.JPanelVisualizar;
+import Vista.JPanelVisualizarConexiones;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
-
-
 
 public class Conexion implements Serializable {
 
@@ -22,6 +34,10 @@ public class Conexion implements Serializable {
     public static Connection connection = null;
 
     public static boolean conectado = false;
+
+    static BufferedWriter fich = null;
+    static java.util.Date fecha = new Date();
+    static String client;
 
     public static void conectar() {
 
@@ -38,7 +54,7 @@ public class Conexion implements Serializable {
 
     public static void escribirLog(String rutaArchivo, String cliente) throws IOException {
 
-        Logger logger = Logger.getLogger("MyLog");
+        /*Logger logger = Logger.getLogger("MyLog");
         FileHandler fh;
 
         try {
@@ -55,6 +71,36 @@ public class Conexion implements Serializable {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }*/
+        try {
+            fich = new BufferedWriter(new FileWriter(rutaArchivo, true));
+        } catch (IOException ex) {
+            System.out.println("Error de apertura");
         }
+
+        client = cliente + " " + fecha;
+        fich.write(client);
+        client = "\n";
+        fich.write(client);
+        fich.close();
+    }
+
+    public static void leerLog(String rutaArchivo) throws IOException, ClassNotFoundException {
+
+        FileReader f = new FileReader(rutaArchivo);
+
+        try {
+            BufferedReader fichLect = new BufferedReader(f);
+
+            String aux;
+
+            while ((aux = fichLect.readLine()) != null){
+                    JPanelVisualizarConexiones.historialConexiones.setText(JPanelVisualizarConexiones.historialConexiones.getText() + aux + "\n");
+            }
+            fichLect.close();
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Error en la apertura del fichero, compruebe que exista", "Mensaje de error", JOptionPane.WARNING_MESSAGE);
+        }
+
     }
 }

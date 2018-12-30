@@ -36,3 +36,6 @@ insert into reparacion values
 (
 3, 'cristal', 120, 1, '12/12/2018'
 );
+
+delete from reparacion where codcoche = 1;
+delete from coche where codigo = 1;
