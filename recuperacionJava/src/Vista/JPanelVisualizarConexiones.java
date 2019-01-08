@@ -127,7 +127,7 @@ public class JPanelVisualizarConexiones extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -142,7 +142,7 @@ public class JPanelVisualizarConexiones extends javax.swing.JPanel {
         JPanelMenuPrincipal cancelar;
         try {
             cancelar = new JPanelMenuPrincipal();
-            cancelar.setSize(500, 650);
+            cancelar.setSize(500, 658);
             this.removeAll();
             this.add(cancelar);
             this.revalidate();

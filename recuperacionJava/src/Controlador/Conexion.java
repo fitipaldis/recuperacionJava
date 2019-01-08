@@ -39,7 +39,7 @@ public class Conexion implements Serializable {
     static java.util.Date fecha = new Date();
     static String client;
 
-    public static void conectar() {
+    public static void conectar() throws IOException {
 
         try {
             Class.forName(driver);
@@ -54,24 +54,6 @@ public class Conexion implements Serializable {
 
     public static void escribirLog(String rutaArchivo, String cliente) throws IOException {
 
-        /*Logger logger = Logger.getLogger("MyLog");
-        FileHandler fh;
-
-        try {
-
-            fh = new FileHandler(rutaArchivo, true);
-            logger.addHandler(fh);
-
-            SimpleFormatter formatter = new SimpleFormatter();
-            fh.setFormatter(formatter);
-
-            logger.info(cliente);
-
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
         try {
             fich = new BufferedWriter(new FileWriter(rutaArchivo, true));
         } catch (IOException ex) {

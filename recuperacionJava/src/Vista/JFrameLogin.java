@@ -19,7 +19,7 @@ public class JFrameLogin extends javax.swing.JFrame {
     static public int codigoCliente;
     int contadorIntentos = 3;
 
-    public JFrameLogin() {
+    public JFrameLogin() throws IOException {
         initComponents();
         Conexion.conectar(); // conexion con la base de datos
     }
@@ -162,12 +162,20 @@ public class JFrameLogin extends javax.swing.JFrame {
                     }
                 }
             } catch (SQLException ex) {
-                Excepciones e = new Excepciones(ex.getMessage(), 1);
+                try {
+                    Excepciones e = new Excepciones(ex.getMessage(), 1);
+                } catch (IOException ex1) {
+                    Logger.getLogger(JFrameLogin.class.getName()).log(Level.SEVERE, null, ex1);
+                }
             } catch (IOException ex) {
                 Logger.getLogger(JFrameLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            Excepciones e = new Excepciones(2);
+            try {
+                Excepciones e = new Excepciones(2);
+            } catch (IOException ex) {
+                Logger.getLogger(JFrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -203,7 +211,11 @@ public class JFrameLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameLogin().setVisible(true);
+                try {
+                    new JFrameLogin().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(JFrameLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

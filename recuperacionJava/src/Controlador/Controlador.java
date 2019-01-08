@@ -5,12 +5,15 @@ import Modelo.Coche;
 import Modelo.Reparacion;
 import Vista.JFrameLogin;
 import Vista.JPanelVisualizar;
+import static Vista.JPanelVisualizar.codigoCoche;
 import Vista.JPanelVisualizarConexiones;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class Controlador {
@@ -87,7 +90,6 @@ public class Controlador {
 
         while (rset.next()) {
             Coche nuevo = new Coche(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4));
-
             Vista.JFrameLogin.Coches.add(nuevo);
         };
 
@@ -136,6 +138,19 @@ public class Controlador {
 
         int suma = rset.getInt(1) + JFrameLogin.Coches.size();
         return suma + 1;
+    }
+    
+    public static float devolverCosteReparaciones() throws SQLException{
+                
+        stmt = Conexion.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        String sql = Modelo.Consultas.consultarCoches("SUM(PRECIOTOTAL)", "REPARACION", "CODCOCHE", codigoCoche + 1);
+        rset = stmt.executeQuery(sql);
+
+        rset.next();
+        System.out.println("codigo coche: " + codigoCoche);
+        
+        return rset.getFloat(1);
     }
 
     public static void tablaCochesReparacion(int codBici) throws SQLException {

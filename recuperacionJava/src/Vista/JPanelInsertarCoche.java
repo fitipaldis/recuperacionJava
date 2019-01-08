@@ -4,6 +4,7 @@ import Controlador.Excepciones;
 import Modelo.Coche;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -170,7 +171,7 @@ public class JPanelInsertarCoche extends javax.swing.JPanel {
         JPanelMenuPrincipal cancelar;
         try {
             cancelar = new JPanelMenuPrincipal();
-            cancelar.setSize(500, 650);
+            cancelar.setSize(500, 658);
             this.removeAll();
             this.add(cancelar);
             this.revalidate();
@@ -188,17 +189,25 @@ public class JPanelInsertarCoche extends javax.swing.JPanel {
                 agregarCoche();
                 JOptionPane.showMessageDialog(null, "Coche registrado correctamente", "Mensaje de Control", WIDTH);
                 JPanelMenuPrincipal menu = new JPanelMenuPrincipal();
-                menu.setSize(500, 650);
+                menu.setSize(500, 658);
                 this.removeAll();
                 this.add(menu);
                 this.revalidate();
                 this.repaint();
 
             } catch (SQLException ex) {
-                Excepciones e = new Excepciones(ex.getMessage(), 0);
+                try {
+                    Excepciones e = new Excepciones(ex.getMessage(), 0);
+                } catch (IOException ex1) {
+                    Logger.getLogger(JPanelInsertarCoche.class.getName()).log(Level.SEVERE, null, ex1);
+                }
             }
         } else {
-            Excepciones e = new Excepciones(2);
+            try {
+                Excepciones e = new Excepciones(2);
+            } catch (IOException ex) {
+                Logger.getLogger(JPanelInsertarCoche.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -91,11 +91,11 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buttonRegistrarCoche, javax.swing.GroupLayout.PREFERRED_SIZE, 65, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(buttonRegistrarCoche, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(buttonVisualizarCoche)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(buttonLogout)
@@ -127,7 +127,7 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
         JPanelVisualizar verCoches;
         try {
             verCoches = new JPanelVisualizar();
-            verCoches.setSize(500, 650);
+            verCoches.setSize(500, 658);
             this.removeAll();
             this.add(verCoches);
             this.revalidate();
@@ -141,7 +141,7 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
         JPanelVisualizarConexiones verConexiones;
         try {
             verConexiones = new JPanelVisualizarConexiones();
-            verConexiones.setSize(500, 650);
+            verConexiones.setSize(500, 658);
             this.removeAll();
             this.add(verConexiones);
             this.revalidate();
@@ -158,7 +158,7 @@ public class JPanelMenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void comprobarRegistros() throws SQLException {
-        System.out.println("numero: " + Controlador.Controlador.devolverNumeroCoche());
+
         if (Controlador.Controlador.devolverNumeroCoche() == 1) {
             buttonVisualizarCoche.setVisible(false);
         } else {
