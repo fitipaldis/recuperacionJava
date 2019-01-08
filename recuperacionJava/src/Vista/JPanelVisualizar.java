@@ -2,6 +2,7 @@ package Vista;
 
 import Controlador.Conexion;
 import Controlador.Excepciones;
+import static Vista.JPanelInsertarReparacion.cambiarFecha;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -511,7 +513,11 @@ public class JPanelVisualizar extends javax.swing.JPanel {
     private void buttonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalcularActionPerformed
 
         try {
-            fieldCalcular.setText(Controlador.Controlador.devolverCosteReparaciones() + " euros");            
+            if (fieldDateChooser.getCalendar() != null) {
+                fieldCalcular.setText(Controlador.Controlador.devolverCosteReparaciones() + " euros");
+            } else {
+                JOptionPane.showMessageDialog(buttonCalcular, "Debes introducir una fecha valida", "Fecha no valida", WIDTH);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(JPanelVisualizar.class.getName()).log(Level.SEVERE, null, ex);
         }

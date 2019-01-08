@@ -6,11 +6,13 @@ import Modelo.Reparacion;
 import Vista.JFrameLogin;
 import Vista.JPanelVisualizar;
 import static Vista.JPanelVisualizar.codigoCoche;
+import static Vista.JPanelVisualizar.fieldDateChooser;
 import Vista.JPanelVisualizarConexiones;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -139,18 +141,17 @@ public class Controlador {
         int suma = rset.getInt(1) + JFrameLogin.Coches.size();
         return suma + 1;
     }
-    
-    public static float devolverCosteReparaciones() throws SQLException{
-                
-        stmt = Conexion.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-                ResultSet.CONCUR_READ_ONLY);
-        String sql = Modelo.Consultas.consultarCoches("SUM(PRECIOTOTAL)", "REPARACION", "CODCOCHE", codigoCoche + 1);
+
+    public static float devolverCosteReparaciones() throws SQLException {
+
+        stmt = Conexion.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        String sql = ("SELECT SUM(PRECIOTOTAL) FROM REPARACION WHERE CODCOCHE = " + codigoCoche + "AND FECHA < '" + new SimpleDateFormat("yyyy-MM-dd").format(fieldDateChooser.getDate()) + "'");
         rset = stmt.executeQuery(sql);
 
         rset.next();
-        System.out.println("codigo coche: " + codigoCoche);
-        
+
         return rset.getFloat(1);
+        
     }
 
     public static void tablaCochesReparacion(int codBici) throws SQLException {
