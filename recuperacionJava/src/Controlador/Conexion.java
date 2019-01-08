@@ -1,30 +1,20 @@
 package Controlador;
 //Establece la conexion con la BD y agrega al fichero de conexiones el login del usuario correspondiente.
 
-import Vista.JPanelVisualizar;
 import Vista.JPanelVisualizarConexiones;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.EOFException;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 
 public class Conexion implements Serializable {
 

@@ -1,8 +1,6 @@
 package Vista;
 
-import static Vista.JPanelVisualizar.contador;
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;

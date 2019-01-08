@@ -1,13 +1,9 @@
 package Controlador;
 
-import static Controlador.Conexion.fich;
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class FicheroErrores {
 
