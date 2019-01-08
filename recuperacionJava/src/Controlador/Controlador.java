@@ -94,6 +94,8 @@ public class Controlador {
             Coche nuevo = new Coche(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4));
             Vista.JFrameLogin.Coches.add(nuevo);
         };
+        
+        stmt.close();
 
     }
 

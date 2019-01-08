@@ -19,7 +19,7 @@ create table coche (
 create table reparacion (
 	codigo integer primary key not null,
 	descripcion varchar(50) not null,
-	preciototal numeric(5,2) not null,	
+	preciototal real not null,	
 	codcoche integer not null,
 	fecha date not null,
 	constraint fk_coche foreign key (codcoche) references coche (codigo)

@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Conexion;
+import Controlador.Controlador;
 import Controlador.Excepciones;
 import static Vista.JPanelInsertarReparacion.cambiarFecha;
 import static java.awt.image.ImageObserver.WIDTH;
@@ -420,8 +421,8 @@ public class JPanelVisualizar extends javax.swing.JPanel {
     private void buttonEliminarCocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarCocheActionPerformed
         Statement stmt = null;
         try {
-            ResultSet rset = Controlador.Controlador.mostrarDatosCoches(contador);
-            stmt = Controlador.Conexion.connection.createStatement();
+            ResultSet rset = Controlador.mostrarDatosCoches(contador);
+            stmt = Conexion.connection.createStatement();
             String sql;
             if (JFrameLogin.Reparaciones.size() > 0) {
                 sql = "DELETE FROM REPARACION WHERE CODCOCHE = " + rset.getInt(1); //primero elimino las relaciones del coche con las reparaciones
@@ -430,9 +431,11 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             sql = "DELETE FROM COCHE WHERE CODIGO = " + rset.getInt(1); // luego elimino el coche 
             stmt.executeUpdate(sql);
             JOptionPane.showMessageDialog(buttonEliminarCoche, "Coche eliminado correctamente", "Confirmacion de eliminacion", WIDTH);
-            contador--;
+            contador = 0;
+            limpiarListas();
+            Controlador.cargarCoches();
             JPanelMenuPrincipal cancelar = new JPanelMenuPrincipal();
-            cancelar.setSize(500, 650);
+            cancelar.setSize(500, 658);
             this.removeAll();
             this.add(cancelar);
             this.revalidate();
@@ -442,6 +445,10 @@ public class JPanelVisualizar extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buttonEliminarCocheActionPerformed
 
+    public void limpiarListas() {
+
+        JFrameLogin.Coches.removeAll(JFrameLogin.Coches);
+    }
     private void buttonExaminarIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExaminarIMGActionPerformed
         JFileChooser nuevaIMG = new JFileChooser();
         nuevaIMG.setDialogTitle("Cargar");
@@ -460,8 +467,8 @@ public class JPanelVisualizar extends javax.swing.JPanel {
             Statement stmt = null;
             try {
 
-                ResultSet rset = Controlador.Controlador.mostrarDatosCoches(contador);
-                stmt = Controlador.Conexion.connection.createStatement();
+                ResultSet rset = Controlador.mostrarDatosCoches(contador);
+                stmt = Conexion.connection.createStatement();
                 String sql = "UPDATE COCHE SET IMAGEN = '" + foto + "' WHERE CODIGO = " + rset.getInt(1);
                 stmt.executeUpdate(sql);
                 verCoches();
@@ -489,8 +496,8 @@ public class JPanelVisualizar extends javax.swing.JPanel {
         if (!fieldMarcaActualizar.getText().equals("")) {
             Statement stmt = null;
             try {
-                ResultSet rset = Controlador.Controlador.mostrarDatosCoches(contador);
-                stmt = Controlador.Conexion.connection.createStatement();
+                ResultSet rset = Controlador.mostrarDatosCoches(contador);
+                stmt = Conexion.connection.createStatement();
                 String sql = "UPDATE COCHE SET MARCA = '" + fieldMarcaActualizar.getText() + "' WHERE CODIGO = " + rset.getInt(1);
                 stmt.executeUpdate(sql);
                 verCoches();
@@ -514,7 +521,7 @@ public class JPanelVisualizar extends javax.swing.JPanel {
 
         try {
             if (fieldDateChooser.getCalendar() != null) {
-                fieldCalcular.setText(Controlador.Controlador.devolverCosteReparaciones() + " euros");
+                fieldCalcular.setText(Controlador.devolverCosteReparaciones() + " euros");
             } else {
                 JOptionPane.showMessageDialog(buttonCalcular, "Debes introducir una fecha valida", "Fecha no valida", WIDTH);
             }
@@ -525,10 +532,10 @@ public class JPanelVisualizar extends javax.swing.JPanel {
 
     public void verCoches() throws IOException, SQLException, ParseException {
 
-        ResultSet rset = Controlador.Controlador.mostrarDatosCoches(contador);
+        ResultSet rset = Controlador.mostrarDatosCoches(contador);
 
         codigoCoche = rset.getInt(1);
-        Controlador.Controlador.tablaCochesReparacion(codigoCoche);
+        Controlador.tablaCochesReparacion(codigoCoche);
         mostrarDatos(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4));
     }
 
@@ -547,7 +554,7 @@ public class JPanelVisualizar extends javax.swing.JPanel {
         //labelImagen.setIcon(icon);
         labelCodigo.setText("");
         labelMarca.setText("");
-        labelNomCliente.setText(Controlador.Controlador.devolverNombreCliente().toUpperCase());
+        labelNomCliente.setText(Controlador.devolverNombreCliente().toUpperCase());
     }
 
     public static int getCodigoCoche() {
